@@ -17,18 +17,22 @@ export class SpotifyService {
 
 getArtistas(termino:string){
 
+    //Autenticacion de spotify
     let headers = new Headers();
-    headers.append( 'authorization', 'Bearer BQB78SqzbkLGzqzmbdMINDRAVOcRyxVBHH0BEruuE8jME7JJHwziNdYdMidrdOS7BFce0RgR-NRj_IxbtSs9hA');
+    headers.append( 'authorization', 'Bearer BQDZgb3vyFmGwLcF2N8Uz4_SdMTFqsQV6tZALSd4X0uZM-UeCf316q9STssDS5Jo6iVcDnnYmYgcEBQtaQ3vTg');
 
+    //peticion http
     let query = `?q=${ termino }&type=artist`;
     let url = this.urlBusqueda + query;
 
     console.log(url);
 
     //Peticion URL => Observable o promesa
-    return this.http.get( url ).map(res =>{
-                console.log(res);
-                //this.artistas = res.json().artists.items;
+    return this.http.get( url, {headers} ).map(res =>{
+                //console.log(res.json().artists.items);
+                this.artistas = res.json().artists.items;
+                console.log(this.artistas);
+                return res.json().artists.items;
               } )
 }
 

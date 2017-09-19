@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+
+//Librerias para NgModule
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HttpModule } from '@angular/http';
 
 import {APP_ROUTING} from './app.routes';
@@ -23,6 +27,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
   imports: [
     BrowserModule,
     APP_ROUTING,
+    FormsModule,
     //Permite peticiones por Http
     HttpModule,
   ],

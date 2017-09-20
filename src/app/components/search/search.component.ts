@@ -13,7 +13,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {}
 
-
   buscarArtista(){
     //llama al observable
     //console.log(this.termino);

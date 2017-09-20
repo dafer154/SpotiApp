@@ -19,7 +19,7 @@ getArtistas(termino:string){
 
     //Autenticacion de spotify
     let headers = new Headers();
-    headers.append( 'authorization', 'Bearer BQDZgb3vyFmGwLcF2N8Uz4_SdMTFqsQV6tZALSd4X0uZM-UeCf316q9STssDS5Jo6iVcDnnYmYgcEBQtaQ3vTg');
+    headers.append( 'authorization', 'Bearer BQAC-nDTniXlz3ozev42Hnt_oX6d2QGDvf2WeLBgxpQK4EinTPYdHn0tFdwAAFXHvFdIsdvWUfJTzFV8asqASw');
 
     //peticion http
     let query = `?q=${ termino }&type=artist`;

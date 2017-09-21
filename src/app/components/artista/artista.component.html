@@ -1,3 +1,54 @@
-<p>
-  artista works!
-</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+
+      <img [src]="artista.images | sinfoto " class="img-thumbnail img-circle" alt="...">
+
+    </div>
+    <div class="col-md-8">
+
+      <h1> {{artista.name}}</h1>
+      <hr>
+
+          <div class="col-md-4">
+            <a [routerLink]="['/buscar']" class="btn btn-outline-primary" >Regresar</a>
+            <a [href]=" artista.id | domseguro:'https://open.spotify.com/artist/' "
+               class="btn btn-outline-secondary" >spotify</a>
+          </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+<div>
+  <br>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered" >
+  <thead>
+    <tr>
+      <th>Foto</th>
+      <th>nombre</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let pista of pistas">
+      <td><img [src]="pista.album.images[0].url" class="img-thumbnail img-circle img-20"></td>
+      <td><h1> {{pista.name | lowercase }}</h1></td>
+
+    </tr>
+
+  </tbody>
+</table>
+    </div>
+  </div>
+
+</div>

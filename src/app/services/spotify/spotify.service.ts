@@ -11,7 +11,8 @@ export class SpotifyService {
   artistas:any[] = [];
 
   urlBusqueda:string = "https://api.spotify.com/v1/search";
-  //urlArtista:string = "https://api.spotify.com/v1/artists";
+  urlArtista:string = "https://api.spotify.com/v1/artists";
+  token:string = "BQDANrv_wYl8c1a1I2KY5_lA-9ee8aPwh5-xQuhRdBRgJaOsN2JcaMI3RvFok1OHXDOx-f_TUfDM0ccB_r86Vw"
 
   constructor(private http:Http) { }
 
@@ -19,7 +20,7 @@ getArtistas(termino:string){
 
     //Autenticacion de spotify
     let headers = new Headers();
-    headers.append( 'authorization', 'Bearer BQAC-nDTniXlz3ozev42Hnt_oX6d2QGDvf2WeLBgxpQK4EinTPYdHn0tFdwAAFXHvFdIsdvWUfJTzFV8asqASw');
+    headers.append( 'authorization', `Bearer ${this.token}`);
 
     //peticion http
     let query = `?q=${ termino }&type=artist`;
@@ -35,5 +36,42 @@ getArtistas(termino:string){
                 return res.json().artists.items;
               } )
 }
+
+getArtista(id:string){
+
+    //Autenticacion de spotify
+    let headers = new Headers();
+    headers.append( 'authorization', `Bearer ${this.token}`);
+
+    //peticion http
+    let query = `/${ id }`;
+    let url = this.urlArtista + query;
+
+    console.log(url);
+
+    //Peticion URL => Observable o promesa
+    return this.http.get( url, {headers} ).map(res =>{
+                console.log(res.json());
+                //this.artistas = res.json().artists.items;
+                //console.log(this.artistas);
+                return res.json();
+              } )
+}
+
+getTop( id:string ){
+
+   let headers = new Headers();
+   headers.append( 'authorization', `Bearer ${this.token}` );
+
+   let query = `/${ id }/top-tracks?country=US`;
+   let url = this.urlArtista + query;
+
+   return this.http.get( url, { headers } )
+           .map(res =>{
+             console.log(res.json().tracks);
+             return res.json().tracks;
+           });
+ }
+
 
 }
